@@ -1,0 +1,9 @@
+# Godot-specific ignores
+.godot/
+*.translation
+*.worker
+
+# Mono-specific ignores (if using C#)
+.mono/
+data_*/
+mono_crash.*.json
