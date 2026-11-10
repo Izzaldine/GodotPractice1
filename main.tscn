@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://bhagqqe7o7d0j"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_main_gd"]
+[ext_resource type="PackedScene" uid="uid://cl4e7705hd4nq" path="res://player.tscn" id="2_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://6twnig5ei640" path="res://enemy.tscn" id="3_h2yge"]
+[ext_resource type="AudioStream" uid="uid://bog6ralcx6keb" path="res://art/gameover.wav" id="4_gameover"]
+[ext_resource type="FontFile" uid="uid://dokyp6s2srjhm" path="res://fonts/Xolonium-Regular.ttf" id="5_font"]
+
+[node name="Main" type="Node2D" unique_id=410552299]
+script = ExtResource("1_main_gd")
+
+[node name="Player" parent="." unique_id=1872070794 instance=ExtResource("2_0xm2m")]
+position = Vector2(220, 324)
+
+[node name="Enemy" parent="." unique_id=326059918 instance=ExtResource("3_h2yge")]
+position = Vector2(780, 324)
+
+[node name="GameOverSound" type="AudioStreamPlayer" parent="." unique_id=1083440123]
+stream = ExtResource("4_gameover")
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=1937284901]
+
+[node name="GameOverPanel" type="CenterContainer" parent="UI" unique_id=942857120]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/GameOverPanel" unique_id=582910432]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="GameOverLabel" type="Label" parent="UI/GameOverPanel/VBoxContainer" unique_id=729104512]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_font")
+theme_override_font_sizes/font_size = 64
+text = "YOU DIED"
+horizontal_alignment = 1
+
+[node name="RestartButton" type="Button" parent="UI/GameOverPanel/VBoxContainer" unique_id=881023491]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_font")
+theme_override_font_sizes/font_size = 28
+text = "Restart"
+
+[connection signal="pressed" from="UI/GameOverPanel/VBoxContainer/RestartButton" to="." method="_on_restart_button_pressed"]

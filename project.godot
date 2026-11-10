@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Practice 1"
-run/main_scene="uid://cl4e7705hd4nq"
+run/main_scene="uid://bhagqqe7o7d0j"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 
 [display]
